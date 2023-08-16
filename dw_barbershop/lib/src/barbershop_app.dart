@@ -1,4 +1,5 @@
 import 'package:asyncstate/widget/async_state_builder.dart';
+import 'package:dw_barbershop/src/features/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'core/widgets/barbershop_loader.dart';
@@ -17,6 +18,7 @@ class BarbershopApp extends StatelessWidget {
           navigatorObservers: [asyncNavigatorObserver],
           routes: {
             '/': (_) => const SplashPage(),
+            '/auth/login': (_) => const LoginPage(),
           },
         );
       },
