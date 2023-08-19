@@ -7,7 +7,7 @@ part of 'barbershop_register_vm.dart';
 // **************************************************************************
 
 String _$barbershopRegisterVmHash() =>
-    r'e5f5b7a58911fc1d6a9732727f29c21ba50d7a11';
+    r'a56ee7a6403f2f5d0f3eadb42ac323627e43418d';
 
 /// See also [BarbershopRegisterVm].
 @ProviderFor(BarbershopRegisterVm)

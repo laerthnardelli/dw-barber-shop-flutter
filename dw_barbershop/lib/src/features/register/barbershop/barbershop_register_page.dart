@@ -1,10 +1,9 @@
 import 'package:dw_barbershop/src/core/ui/helpers/form_helper.dart';
-import 'package:dw_barbershop/src/core/ui/helpers/messages.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:validatorless/validatorless.dart';
 
+import '../../../core/ui/helpers/messages.dart';
 import '../../../core/ui/widgets/hours_panel.dart';
 import '../../../core/ui/widgets/weekdays_panel.dart';
 import 'barbershop_register_state.dart';
@@ -43,7 +42,6 @@ class _BarbershopRegisterPageState
         case BarbershopRegisterStateStatus.error:
           Messages.showError(
               'Desculpe Ocorreu um erro ao registrar barbearia', context);
-          break;
         case BarbershopRegisterStateStatus.success:
           Navigator.of(context)
               .pushNamedAndRemoveUntil('/home/adm', (route) => false);
@@ -86,7 +84,7 @@ class _BarbershopRegisterPageState
                 WeekdaysPanel(
                   onDayPressed: (value) {
                     //print('Dia selecionado: $value');
-                    barbershopRegisterVm.addOrRemoveOpeningDay(value);
+                    barbershopRegisterVm.addOrRemoveOpenDay(value);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -95,7 +93,7 @@ class _BarbershopRegisterPageState
                   endTime: 23,
                   onHourPressed: (int value) {
                     //print('Hora selecionada: $value');
-                    barbershopRegisterVm.addOrRemoveOpeningHours(value);
+                    barbershopRegisterVm.addOrRemoveOpenHour(value);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -114,7 +112,7 @@ class _BarbershopRegisterPageState
                     }
                   },
                   child: const Text('CADASTRAR ESTABELECIMENTO'),
-                )
+                ),
               ],
             ),
           ),

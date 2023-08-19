@@ -11,7 +11,7 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
   @override
   BarbershopRegisterState build() => BarbershopRegisterState.initial();
 
-  void addOrRemoveOpeningDay(String weekDay) {
+  void addOrRemoveOpenDay(String weekDay) {
     final openingDays = state.openingDays;
 
     if (openingDays.contains(weekDay)) {
@@ -23,7 +23,7 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
     state = state.copyWith(openingDays: openingDays);
   }
 
-  void addOrRemoveOpeningHours(int hour) {
+  void addOrRemoveOpenHour(int hour) {
     final openingHours = state.openingHours;
 
     if (openingHours.contains(hour)) {
@@ -46,7 +46,8 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
       openingHours: openingHours,
     );
 
-    final registerResult = repository.save(dto);
+    final registerResult = await repository.save(dto);
+
     switch (registerResult) {
       case Success():
         ref.invalidate(getMyBarbershopProvider);
