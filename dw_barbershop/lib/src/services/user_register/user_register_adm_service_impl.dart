@@ -17,7 +17,7 @@ class UserRegisterAdmServiceImpl implements UserRegisterAdmService {
 
   @override
   Future<Either<ServiceException, Nil>> execute(
-      ({String email, String name, String password}) userData) async {
+      ({String name, String email, String password}) userData) async {
     final registerResult = await userRepository.registerAdmin(userData);
 
     switch (registerResult) {
