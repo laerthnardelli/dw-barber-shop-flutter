@@ -45,7 +45,7 @@ Future<BarbershopModel> getMyBarbershop(GetMyBarbershopRef ref) async {
   final userModel = await ref.watch(getMeProvider.future);
 
   final barbershopRepository = ref.watch(barbershopRepositoryProvider);
-  final result = await barbershopRepository.getMyBarber(userModel);
+  final result = await barbershopRepository.getMyBarbershop(userModel);
 
   return switch (result) {
     Success(value: final barbershop) => barbershop,
