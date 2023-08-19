@@ -5,6 +5,9 @@ import 'package:dw_barbershop/src/services/user_login/user_login_service.dart';
 import 'package:dw_barbershop/src/services/user_login/user_login_service_impl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../model/user_model.dart';
+import '../fp/either.dart';
+
 part 'application_providers.g.dart';
 
 // dart run build_runner watch -d
@@ -19,3 +22,13 @@ UserRepository userRepository(UserRepositoryRef ref) =>
 @Riverpod(keepAlive: true)
 UserLoginService userLoginService(UserLoginServiceRef ref) =>
     UserLoginServiceImpl(userRepository: ref.read(userRepositoryProvider));
+
+@Riverpod(keepAlive: true)
+Future<UserModel> getMe(GetMeRef ref) async {
+  final result = await ref.watch(userRepositoryProvider).me();
+
+  return switch (result) {
+    Success(value: final userModel) => userModel,
+    Failure(:final exception) => throw exception,
+  };
+}
