@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'core/ui/barbershop_nav_global_key.dart';
 import 'core/ui/widgets/barbershop_loader.dart';
 import 'core/ui/barbershop_theme.dart';
-import 'features/register/user_register_page.dart';
+import 'features/register/user/user_register_page.dart';
+
 import 'features/splash/splash_page.dart';
 
 class BarbershopApp extends StatelessWidget {
