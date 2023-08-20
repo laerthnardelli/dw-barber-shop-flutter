@@ -3,8 +3,15 @@ import 'package:dw_barbershop/src/core/ui/widgets/hours_panel.dart';
 import 'package:dw_barbershop/src/core/ui/widgets/weekdays_panel.dart';
 import 'package:flutter/material.dart';
 
-class EmployeeRegisterPage extends StatelessWidget {
+class EmployeeRegisterPage extends StatefulWidget {
   const EmployeeRegisterPage({super.key});
+
+  @override
+  State<EmployeeRegisterPage> createState() => _EmployeeRegisterPageState();
+}
+
+class _EmployeeRegisterPageState extends State<EmployeeRegisterPage> {
+  var registerADM = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,13 @@ class EmployeeRegisterPage extends StatelessWidget {
                 const SizedBox(height: 32),
                 Row(
                   children: [
-                    Checkbox.adaptive(value: true, onChanged: (value) {}),
+                    Checkbox.adaptive(
+                        value: registerADM,
+                        onChanged: (value) {
+                          setState(() {
+                            registerADM = !registerADM;
+                          });
+                        }),
                     const Expanded(
                       child: Text(
                         'Sou administrador e quero me cadastrar como colaborador',
@@ -33,28 +46,31 @@ class EmployeeRegisterPage extends StatelessWidget {
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    const SizedBox(height: 24),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        label: Text('Nome'),
+                Offstage(
+                  offstage: registerADM,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 24),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          label: Text('Nome'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        label: Text('E-mail'),
+                      const SizedBox(height: 24),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          label: Text('E-mail'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        label: Text('Senha'),
+                      const SizedBox(height: 24),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          label: Text('Senha'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
+                      const SizedBox(height: 24),
+                    ],
+                  ),
                 ),
                 WeekdaysPanel(onDayPressed: (String day) {}),
                 const SizedBox(height: 24),
