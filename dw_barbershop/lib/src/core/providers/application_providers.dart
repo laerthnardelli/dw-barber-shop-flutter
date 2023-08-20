@@ -11,6 +11,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/user_model.dart';
 import '../../repositories/barbershop/barbershop_repository.dart';
+import '../../repositories/schedule/schedule_repository.dart';
+import '../../repositories/schedule/schedule_repository_impl.dart';
 import '../fp/either.dart';
 import '../ui/barbershop_nav_global_key.dart';
 
@@ -66,3 +68,7 @@ Future<void> logout(LogoutRef ref) async {
   Navigator.of(BarbershopNavGlobalKey.instance.navKey.currentContext!)
       .pushNamedAndRemoveUntil('/auth/login', (route) => false);
 }
+
+@riverpod
+ScheduleRepository scheduleRepository(ScheduleRepositoryRef ref) =>
+    ScheduleRepositoryImpl(restClient: ref.read(restClientProvider));
