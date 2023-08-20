@@ -23,8 +23,7 @@ class HomeAdmPage extends ConsumerWidget {
         shape: const CircleBorder(),
         backgroundColor: ColorsConstants.brown,
         onPressed: () {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil('/employee/register', (route) => false);
+          Navigator.of(context).pushNamed('/employee/register');
         },
         child: const CircleAvatar(
           backgroundColor: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:dw_barbershop/src/core/ui/widgets/avatar_widget.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeRegisterPage extends StatelessWidget {
@@ -9,12 +10,15 @@ class EmployeeRegisterPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Cadastrar colaborador'),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
+        child: Center(
           child: Column(
-        children: [
-          Container(),
-        ],
-      )),
+            children: [
+              AvatarWidget(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
