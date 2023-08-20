@@ -16,7 +16,6 @@ class HomeHeader extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(24.0),
       margin: const EdgeInsets.only(bottom: 16),
-      // height: 400,
       width: MediaQuery.sizeOf(context).width,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
