@@ -80,7 +80,7 @@ class _EmployeeRegisterPageState extends State<EmployeeRegisterPage> {
                   startTime: 6,
                   endTime: 23,
                   onHourPressed: (int hour) {},
-                  enabledTimes: [6, 7, 8, 9, 16],
+                  enabledTimes: const [6, 7, 8, 9, 16],
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton(
