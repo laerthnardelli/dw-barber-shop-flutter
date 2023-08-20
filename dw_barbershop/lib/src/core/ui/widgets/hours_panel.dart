@@ -1,5 +1,6 @@
-import 'package:dw_barbershop/src/core/ui/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dw_barbershop/src/core/ui/constants.dart';
 
 class HoursPanel extends StatefulWidget {
   final int startTime;
@@ -41,7 +42,7 @@ class _HoursPanelState extends State<HoursPanel> {
     ) = widget;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      //crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           'Selecione os horários de atendimento',
