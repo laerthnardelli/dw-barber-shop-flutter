@@ -16,4 +16,7 @@ abstract interface class UserRepository {
         String email,
         String password,
       }) userData); //record to replace the DTO
+
+  Future<Either<RepositoryException, List<UserModel>>> getEmployees(
+      int barbershopId);
 }
