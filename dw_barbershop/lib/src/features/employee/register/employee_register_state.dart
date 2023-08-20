@@ -28,13 +28,13 @@ class EmployeeRegisterState {
   EmployeeRegisterState copyWith({
     EmployeeRegisterStateStatus? status,
     bool? registerADM,
-    List<String>? workDays,
+    List<String>? workdays,
     List<int>? workhours,
   }) {
     return EmployeeRegisterState(
       status: status ?? this.status,
       registerADM: registerADM ?? this.registerADM,
-      workdays: workDays ?? this.workdays,
+      workdays: workdays ?? this.workdays,
       workhours: workhours ?? this.workhours,
     );
   }
