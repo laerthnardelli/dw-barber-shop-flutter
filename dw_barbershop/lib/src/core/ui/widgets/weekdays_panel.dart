@@ -2,11 +2,13 @@ import 'package:dw_barbershop/src/core/ui/constants.dart';
 import 'package:flutter/material.dart';
 
 class WeekdaysPanel extends StatelessWidget {
+  final List<String>? enabledDays;
   final ValueChanged<String> onDayPressed;
 
   const WeekdaysPanel({
     super.key,
     required this.onDayPressed,
+    this.enabledDays,
   });
 
   @override
@@ -31,31 +33,38 @@ class WeekdaysPanel extends StatelessWidget {
               children: [
                 ButtonDay(
                   label: 'Seg',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Ter',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Qua',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Qui',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Sex',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Sab',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
                 ButtonDay(
                   label: 'Dom',
-                  onDaySelected: onDayPressed,
+                  onDayPressed: onDayPressed,
+                  enabledDays: enabledDays,
                 ),
               ],
             ),
@@ -67,13 +76,15 @@ class WeekdaysPanel extends StatelessWidget {
 }
 
 class ButtonDay extends StatefulWidget {
+  final List<String>? enabledDays;
   final String label;
-  final ValueChanged<String> onDaySelected;
+  final ValueChanged<String> onDayPressed;
 
   const ButtonDay({
     super.key,
     required this.label,
-    required this.onDaySelected,
+    required this.onDayPressed,
+    this.enabledDays,
   });
 
   @override
@@ -90,16 +101,25 @@ class _ButtonDayState extends State<ButtonDay> {
     final buttonBorderColor =
         selected ? ColorsConstants.brown : ColorsConstants.grey;
 
+    final ButtonDay(:enabledDays, :label) = widget;
+
+    final disableDay = enabledDays != null && !enabledDays.contains(label);
+
+    if (disableDay) {
+      buttonColor = Colors.grey[400]!;
+    }
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
-        onTap: () {
-          widget.onDaySelected(widget.label);
-          setState(() {
-            selected = !selected;
-          });
-        },
+        onTap: disableDay
+            ? null
+            : () {
+                widget.onDayPressed(label);
+                setState(() {
+                  selected = !selected;
+                });
+              },
         child: Container(
           // margin: const EdgeInsets.all(3),
           width: 40,
@@ -113,7 +133,7 @@ class _ButtonDayState extends State<ButtonDay> {
           ),
           child: Center(
             child: Text(
-              widget.label,
+              label,
               style: TextStyle(
                 fontSize: 12,
                 color: textColor,
