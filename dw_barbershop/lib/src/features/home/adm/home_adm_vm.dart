@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/fp/either.dart';
 import '../../../core/providers/application_providers.dart';
 import '../../../model/barbershop_model.dart';
+import '../../../model/user_model.dart';
 import 'home_adm_state.dart';
 
 part 'home_adm_vm.g.dart';
@@ -16,10 +17,23 @@ class HomeAdmVm extends _$HomeAdmVm {
     final BarbershopModel(id: barbershopId) =
         await ref.read(getMyBarbershopProvider.future);
 
+    final me = await ref.watch(getMeProvider.future);
+
     final employeesResult = await repository.getEmployees(barbershopId);
 
     switch (employeesResult) {
-      case Success(value: final employees):
+      case Success(value: final employeesData):
+        final employees = <UserModel>[];
+
+        if (me
+            case UserModelADM(
+              workDays: _?, //essa sintax é mesma coisa que != null
+              workHours: _?, //essa sintax é mesma coisa que != null
+            )) {
+          employees.add(me);
+        }
+        employees.addAll(employeesData);
+
         return HomeAdmState(
             status: HomeAdmStateStatus.loaded, employees: employees);
       case Failure():
