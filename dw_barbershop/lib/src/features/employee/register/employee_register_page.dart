@@ -72,12 +72,15 @@ class _EmployeeRegisterPageState extends State<EmployeeRegisterPage> {
                     ],
                   ),
                 ),
-                WeekdaysPanel(onDayPressed: (String day) {}),
+                WeekdaysPanel(
+                    enabledDays: const ['Seg', 'Ter', 'Sab'],
+                    onDayPressed: (String day) {}),
                 const SizedBox(height: 24),
                 HoursPanel(
                   startTime: 6,
                   endTime: 23,
                   onHourPressed: (int hour) {},
+                  enabledTimes: [6, 7, 8, 9, 16],
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton(
