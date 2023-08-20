@@ -54,8 +54,7 @@ class UserRepositoryImpl implements UserRepository {
           RepositoryException(message: 'Erro ao buscar usuário logado'));
     } on ArgumentError catch (e, s) {
       log('Invalid Json', error: e, stackTrace: s);
-      return Failure(
-          RepositoryException(message: 'Erro ao buscar usuário logado'));
+      return Failure(RepositoryException(message: e.message));
     }
   }
 
@@ -70,7 +69,7 @@ class UserRepositoryImpl implements UserRepository {
         'profile': 'ADM'
       });
       return Success(nil);
-    } on Exception catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao registrar usuário admin', error: e, stackTrace: s);
       return Failure(
         RepositoryException(message: 'Erro ao registrar usuário admin'),
@@ -101,7 +100,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<RepositoryException, Nil>> registerAdmAsEmployee(
-      ({List<String> workDays, List<int> workHours}) userModel) async {
+      ({List<String> workdays, List<int> workHours}) userModel) async {
     try {
       final userModelResult = await me();
       final int userId;
@@ -114,7 +113,7 @@ class UserRepositoryImpl implements UserRepository {
       }
 
       await restClient.auth.put('/users/$userId', data: {
-        'work_days': userModel.workDays,
+        'work_days': userModel.workdays,
         'work_hours': userModel.workHours,
       });
 
@@ -129,22 +128,23 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<RepositoryException, Nil>> registerEmployee(
-      ({
-        int barbershopId,
-        String email,
-        String name,
-        String password,
-        List<String> workDays,
-        List<int> workHours
-      }) userModel) async {
+    ({
+      int barbershopId,
+      String email,
+      String name,
+      String password,
+      List<String> workdays,
+      List<int> workHours
+    }) userModel,
+  ) async {
     try {
-      await restClient.auth.post('/users/', data: {
+      await restClient.auth.post('/users', data: {
+        'barbershop_id': userModel.barbershopId,
         'name': userModel.name,
         'email': userModel.email,
         'password': userModel.password,
-        'barbeshop_id': userModel.barbershopId,
         'profile': 'EMPLOYEE',
-        'work_days': userModel.workDays,
+        'work_days': userModel.workdays,
         'work_hours': userModel.workHours,
       });
 

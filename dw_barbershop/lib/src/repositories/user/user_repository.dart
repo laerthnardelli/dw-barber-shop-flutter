@@ -22,7 +22,7 @@ abstract interface class UserRepository {
 
   Future<Either<RepositoryException, Nil>> registerAdmAsEmployee(
     ({
-      List<String> workDays,
+      List<String> workdays,
       List<int> workHours,
     }) userModel,
   );
@@ -33,7 +33,7 @@ abstract interface class UserRepository {
       String name,
       String email,
       String password,
-      List<String> workDays,
+      List<String> workdays,
       List<int> workHours,
     }) userModel,
   );
