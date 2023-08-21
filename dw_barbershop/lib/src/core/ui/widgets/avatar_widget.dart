@@ -5,7 +5,10 @@ import '../constants.dart';
 
 class AvatarWidget extends StatelessWidget {
   final bool hideUploadButton;
-  const AvatarWidget({super.key, this.hideUploadButton = false});
+  const AvatarWidget({
+    super.key,
+    this.hideUploadButton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +22,17 @@ class AvatarWidget extends StatelessWidget {
             height: 90,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(ImageConstants.avatar),
+                image: AssetImage(
+                  ImageConstants.avatar,
+                ),
               ),
             ),
           ),
-          Offstage(
-            offstage: !hideUploadButton,
-            child: Positioned(
-              bottom: 2,
-              right: 2,
+          Positioned(
+            bottom: 2,
+            right: 2,
+            child: Offstage(
+              offstage: !hideUploadButton,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
