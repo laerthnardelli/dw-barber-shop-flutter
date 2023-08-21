@@ -60,23 +60,29 @@ class HomeEmployeeTile extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                       ),
                       onPressed: () {
                         Navigator.of(context)
                             .pushNamed('/schedule', arguments: employee);
                       },
-                      child: const Text('AGENDAR'),
+                      child: const Text(
+                        'AGENDAR',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ),
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/employee/schedule',
                             arguments: employee);
                       },
-                      child: const Text('VER AGENDA'),
+                      child: const Text(
+                        'VER AGENDA',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ),
                     const Icon(
                       BarbershopIcons.penEdit,

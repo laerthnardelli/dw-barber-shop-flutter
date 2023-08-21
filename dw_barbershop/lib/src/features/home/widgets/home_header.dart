@@ -101,7 +101,7 @@ class HomeHeader extends ConsumerWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
-              fontSize: 40,
+              fontSize: 30,
             ),
           ),
           Offstage(
