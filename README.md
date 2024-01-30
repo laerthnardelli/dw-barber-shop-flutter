@@ -13,4 +13,10 @@ Tecnologias Utilizadas: <br/>
 * Syncfusion Flutter Calendar
 * Table Calendar
 
+
 Imagens App:
+
+
+Backend foi json_rest_server version 1.5.10, utilizado para fins didáticos. **(https://pub.dev/packages/json_rest_server)**
+
+
