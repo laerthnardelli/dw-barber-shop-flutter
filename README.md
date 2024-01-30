@@ -28,7 +28,7 @@ Adm: <br/>
 ![image](https://github.com/laerthnardelli/dw-barber-shop-flutter/assets/54412289/d38be56d-2a3e-4d7b-b2d0-8464525ed81a) <br/>
 
 
-Colaborador:
+Colaborador: <br/>
 ![image](https://github.com/laerthnardelli/dw-barber-shop-flutter/assets/54412289/c940351d-e4f6-415e-bcf7-4a9635d4d221)
 ![image](https://github.com/laerthnardelli/dw-barber-shop-flutter/assets/54412289/ffb942bc-ca8f-48c5-b022-4f42bff40fda)
 ![image](https://github.com/laerthnardelli/dw-barber-shop-flutter/assets/54412289/0705a234-4d3e-4dd1-9b34-c3e05d9d88b3)
